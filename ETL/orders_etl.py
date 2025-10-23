@@ -1,32 +1,31 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
+# extraction
 df_orders=pd.read_csv('E-Commerce Dataset by Olist _ Dirty/olist_orders_dataset.csv')
 
-# print(df_orders)
+print(df_orders)
 
 # some informations about orders table
-# print(df_orders.head(10))
-# print('----------------------')
+print(df_orders.head(10))
+print('----------------------')
 
-# print(df_orders.tail(10))
-# print('----------------------')
+print(df_orders.tail(10))
+print('----------------------')
 
-# print(df_orders.info())
-# print('----------------------')
+print(df_orders.info())
+print('----------------------')
 
-# print(df_orders.isna().sum())
-# print('----------------------')
+print(df_orders.isna().sum())
+print('----------------------')
 
-# print(df_orders.describe(include='all'))
-# print('----------------------')
+print(df_orders.describe(include='all'))
+print('----------------------')
 
-# print(df_orders.duplicated().sum())
-# print('----------------------')
+print(df_orders.duplicated().sum())
+print('----------------------')
 
-# print(df_orders['order_status'].unique())
-# print('----------------------')
+print(df_orders['order_status'].unique())
+print('----------------------')
 
 # cleaning & transformations
 df_orders['order_id']=df_orders['order_id'].str.strip()
@@ -66,11 +65,11 @@ df_orders['order_estimated_delivery_date']=pd.to_datetime(df_orders['order_estim
 print(df_orders.head(10))
 print('----------------------')
 
-# print(df_orders.info())
-# print('----------------------')
+print(df_orders.info())
+print('----------------------')
 
-# print(df_orders.describe(include='all'))
-# print('----------------------')
+print(df_orders.describe(include='all'))
+print('----------------------')
 
 # analysis
 print('total orders')
@@ -101,4 +100,5 @@ print('number of orders late')
 print(df_orders[df_orders['order_delivered_customer_date'] > df_orders['order_estimated_delivery_date']].shape[0])
 print('------------------------------------------------')
 
-df_orders.to_csv('orders_clean',index=False)
+# clean file
+df_orders.to_csv('orders_clean.csv',index=False)

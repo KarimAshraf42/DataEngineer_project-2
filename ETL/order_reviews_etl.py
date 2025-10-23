@@ -1,37 +1,53 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import re
+from unidecode import unidecode
 
+# extraction
 df_order_reviews=pd.read_csv('E-Commerce Dataset by Olist _ Dirty/olist_order_reviews_dataset.csv')
 
-# print(df_order_reviews)
+print(df_order_reviews)
 
 # some informations about order reviews table
-# print(df_order_reviews.head(10))
-# print('----------------------')
+print(df_order_reviews.head(10))
+print('----------------------')
 
-# print(df_order_reviews.tail(10))
-# print('----------------------')
+print(df_order_reviews.tail(10))
+print('----------------------')
 
-# print(df_order_reviews.info())
-# print('----------------------')
+print(df_order_reviews.info())
+print('----------------------')
 
-# print(df_order_reviews.isna().sum())
-# print('----------------------')
+print(df_order_reviews.isna().sum())
+print('----------------------')
 
-# print(df_order_reviews.describe(include='all'))
-# print('----------------------')
+print(df_order_reviews.describe(include='all'))
+print('----------------------')
 
-# print(df_order_reviews.duplicated().sum())
-# print('----------------------')
+print(df_order_reviews.duplicated().sum())
+print('----------------------')
 
 # cleaning & transformations
 df_order_reviews['review_id']=df_order_reviews['review_id'].str.strip()
 df_order_reviews['order_id']=df_order_reviews['order_id'].str.strip()
 df_order_reviews['review_comment_title']=df_order_reviews['review_comment_title'].fillna('no comment title')
 df_order_reviews['review_comment_message']=df_order_reviews['review_comment_message'].fillna('no comment message')
-df_order_reviews['review_comment_title']=df_order_reviews['review_comment_title'].str.strip().str.lower()
-df_order_reviews['review_comment_message']=df_order_reviews['review_comment_message'].str.strip().str.lower()
+
+df_order_reviews['review_comment_title'] = (
+    df_order_reviews['review_comment_title']
+    .apply(lambda x: unidecode(x) if isinstance(x, str) else x)  
+    .apply(lambda x: re.sub(r"[^a-zA-Z'\s]", '', x))              
+    .str.strip()
+    .str.lower()
+)
+
+df_order_reviews['review_comment_message'] = (
+    df_order_reviews['review_comment_message']
+    .apply(lambda x: unidecode(x) if isinstance(x, str) else x)  
+    .apply(lambda x: re.sub(r"[^a-zA-Z'\s]", '', x))              
+    .str.strip()
+    .str.lower()
+)
+
 df_order_reviews['review_creation_date']=df_order_reviews['review_creation_date'].str.strip()
 df_order_reviews['review_answer_timestamp']=df_order_reviews['review_answer_timestamp'].str.strip()
 
@@ -63,15 +79,20 @@ df_order_reviews['review_label'] = df_order_reviews['review_score'].apply(label_
 print(df_order_reviews.head(10))
 print('----------------------')
 
-# print(df_order_reviews.info())
-# print('----------------------')
+print(df_order_reviews.info())
+print('----------------------')
 
-# print(df_order_reviews.describe(include='all'))
-# print('----------------------')
+print(df_order_reviews.describe(include='all'))
+print('----------------------')
 
 # analysis
-# print('mos 10 orders have a highest review')
-# print(df_order_reviews.groupby('order_id')['review_score'].max().sort_values(ascending=False).head(10))
-# print('----------------------------------------------------------------')
+print('number of no comment title')
+print(df_order_reviews['review_comment_title'].value_counts()['no comment title'])
+print('----------------------------------------------------------------')
 
-df_order_reviews.to_csv('order_reviews_clean',index=False)
+print('number of no comment message')
+print(df_order_reviews['review_comment_message'].value_counts()['no comment message'])
+print('----------------------------------------------------------------')
+
+# clean file
+df_order_reviews.to_csv('order_reviews_clean.csv',index=False)
