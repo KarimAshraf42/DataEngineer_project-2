@@ -67,4 +67,4 @@ print(df_geolocation.describe(include='all'))
 print('----------------------')
 
 # load
-# df_geolocation.to_csv('geolocation_clean.csv',index=False)
+df_geolocation.to_csv('E-Commerce Dataset by Olist _ Clean/geolocation_clean.csv',index=False)

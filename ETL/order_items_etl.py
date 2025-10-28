@@ -55,4 +55,4 @@ print(df_order_items.describe(include='all'))
 print('----------------------')
 
 # load
-# df_order_items.to_csv('order_items_clean.csv',index=False)
+df_order_items.to_csv('E-Commerce Dataset by Olist _ Clean/order_items_clean.csv',index=False)

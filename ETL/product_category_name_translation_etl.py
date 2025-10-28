@@ -58,4 +58,4 @@ print(df_product_category_name_translation.describe(include='all'))
 print('----------------------')
 
 # load
-# df_product_category_name_translation.to_csv('product_category_name_translation_clean.csv',index=False)
+df_product_category_name_translation.to_csv('E-Commerce Dataset by Olist _ Clean/product_category_name_translation_clean.csv',index=False)

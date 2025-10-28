@@ -21,9 +21,11 @@ sellers=pd.read_csv('E-Commerce Dataset by Olist _ Clean/sellers_clean.csv')
 
 # dimension tables
 dim_customers = customers.copy()
+
 # print(dim_customers)
 
 dim_geolocation = geolocation.copy()
+
 # print(dim_geolocation)
 
 dim_products = pd.merge(
@@ -32,9 +34,11 @@ dim_products = pd.merge(
     how='left',
     on='product_category_name'
 )
+
 # print(dim_products)
 
 dim_sellers = sellers.copy()
+
 # print(dim_sellers)
 
 # fact tables
@@ -44,6 +48,7 @@ fact_orders_items = pd.merge(
     how='left',
     on='order_id'
 )
+
 # print(fact_orders_items)
 
 fact_orders_payments= pd.merge(
@@ -52,6 +57,7 @@ fact_orders_payments= pd.merge(
     how='left',
     on='order_id'
 )
+
 # print(fact_orders_payments)
 
 fact_orders_reviews = pd.merge(
@@ -60,6 +66,7 @@ fact_orders_reviews = pd.merge(
     how='left',
     on='order_id'
 )
+
 # print(fact_orders_reviews)
 
 fact_orders_products = pd.merge(
@@ -68,6 +75,7 @@ fact_orders_products = pd.merge(
     how='left',
     on='product_id'
 )
+
 # print(fact_orders_products)
 
 fact_orders_customers = pd.merge(
@@ -76,6 +84,7 @@ fact_orders_customers = pd.merge(
     how='left',
     on='customer_id'
 )
+
 # print(fact_orders_customers)
 
 fact_orders_full = pd.merge(
@@ -85,29 +94,29 @@ fact_orders_full = pd.merge(
     on='seller_id',
     suffixes=('_customer', '_seller')
 )
+
 # print(fact_orders_full)
 
 # fact & dimension tables
+dim_customers.to_csv('Warehouse/dim_customers.csv', index=False)
 
-# dim_customers.to_csv('dimensions & facts/dim_customers.csv', index=False)
+dim_geolocation.to_csv('Warehouse/dim_geolocation.csv', index=False)
 
-# dim_geolocation.to_csv('dimensions & facts/dim_geolocation.csv', index=False)
+dim_products.to_csv('Warehouse/dim_products.csv', index=False)
 
-# dim_products.to_csv('dimensions & facts/dim_products.csv', index=False)
+dim_sellers.to_csv('Warehouse/dim_sellers.csv', index=False)
 
-# dim_sellers.to_csv('dimensions & facts/dim_sellers.csv', index=False)
+fact_orders_items.to_csv('Warehouse/fact_orders_items.csv', index=False)
 
-# fact_orders_items.to_csv('dimensions & facts/fact_orders_items.csv', index=False)
+fact_orders_payments.to_csv('Warehouse/fact_orders_payments.csv', index=False)
 
-# fact_orders_payments.to_csv('dimensions & facts/fact_orders_payments.csv', index=False)
+fact_orders_reviews.to_csv('Warehouse/fact_orders_reviews.csv', index=False)
 
-# fact_orders_reviews.to_csv('dimensions & facts/fact_orders_reviews.csv', index=False)
+fact_orders_products.to_csv('Warehouse/fact_orders_products.csv', index=False)
 
-# fact_orders_products.to_csv('dimensions & facts/fact_orders_products.csv', index=False)
+fact_orders_customers.to_csv('Warehouse/fact_orders_customers.csv', index=False)
 
-# fact_orders_customers.to_csv('dimensions & facts/fact_orders_customers.csv', index=False)
-
-# fact_orders_full.to_csv('dimensions & facts/fact_orders_full.csv', index=False)
+fact_orders_full.to_csv('Warehouse/fact_orders_full.csv', index=False)
 
 
 
