@@ -61,9 +61,5 @@ print('----------------------')
 print(df_sellers.describe(include='all'))
 print('----------------------')
 
-# analysis
-print('most 10 cities signed in by seller in store')
-print(df_sellers['seller_city'].value_counts().head(10))
-
-# clean file
-df_sellers.to_csv('sellers_clean.csv',index=False)
+# load
+# df_sellers.to_csv('sellers_clean.csv',index=False)

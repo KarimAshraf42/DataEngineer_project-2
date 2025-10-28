@@ -71,34 +71,5 @@ print('----------------------')
 print(df_orders.describe(include='all'))
 print('----------------------')
 
-# analysis
-print('total orders')
-print(df_orders['order_id'].count())
-print('------------------------------------------------')
-
-print('number for each order status')
-print(df_orders['order_status'].value_counts())
-print('------------------------------------------------')
-
-print('most day have ordered')
-print(df_orders['order_purchase_timestamp'].dt.date.value_counts().head(1))
-print('------------------------------------------------')
-
-print('most delivery time day')
-print((df_orders['order_delivered_customer_date'] - df_orders['order_purchase_timestamp']).dt.days.max())
-print('------------------------------------------------')
-
-print('least delivery time day')
-print((df_orders['order_delivered_customer_date'] - df_orders['order_purchase_timestamp']).dt.days.min())
-print('------------------------------------------------')
-
-print('number of orders that not delivered')
-print(df_orders['order_delivered_customer_date'].isna().sum())
-print('------------------------------------------------')
-
-print('number of orders late')
-print(df_orders[df_orders['order_delivered_customer_date'] > df_orders['order_estimated_delivery_date']].shape[0])
-print('------------------------------------------------')
-
-# clean file
-df_orders.to_csv('orders_clean.csv',index=False)
+# load
+# df_orders.to_csv('orders_clean.csv',index=False)

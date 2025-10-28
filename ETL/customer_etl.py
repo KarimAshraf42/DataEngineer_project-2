@@ -69,18 +69,5 @@ print('----------------------')
 print(df_customers.describe(include='all'))
 print('----------------------')
 
-# analysis 
-print('most 10 cities signed in by customer in store')
-print(df_customers['customer_city'].value_counts().head(10))
-
-# visualization
-df_customers['customer_city'].value_counts().head(10).plot(kind='bar')
-plt.title('most 10 cities signed in by customer in store')
-plt.xlabel('city')
-plt.ylabel('number of customers')
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-
-# clean file
-df_customers.to_csv('customer_clean.csv',index=False)
+# load
+# df_customers.to_csv('customer_clean.csv',index=False)

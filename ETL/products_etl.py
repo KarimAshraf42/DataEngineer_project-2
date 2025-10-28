@@ -61,5 +61,5 @@ print('----------------------')
 print(df_products.describe(include='all'))
 print('----------------------')
 
-# clean file
-df_products.to_csv('products_clean.csv',index=False)
+# load
+# df_products.to_csv('products_clean.csv',index=False)

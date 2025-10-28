@@ -85,14 +85,5 @@ print('----------------------')
 print(df_order_reviews.describe(include='all'))
 print('----------------------')
 
-# analysis
-print('number of no comment title')
-print(df_order_reviews['review_comment_title'].value_counts()['no comment title'])
-print('----------------------------------------------------------------')
-
-print('number of no comment message')
-print(df_order_reviews['review_comment_message'].value_counts()['no comment message'])
-print('----------------------------------------------------------------')
-
-# clean file
-df_order_reviews.to_csv('order_reviews_clean.csv',index=False)
+# load
+# df_order_reviews.to_csv('order_reviews_clean.csv',index=False)

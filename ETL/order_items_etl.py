@@ -54,30 +54,5 @@ print('----------------------')
 print(df_order_items.describe(include='all'))
 print('----------------------')
 
-# analysis
-print('The highest product in price')
-print(df_order_items.groupby('product_id')['price'].max().sort_values(ascending=False).head(1))
-print('---------------------------------------------------------')
-
-print('The most 10 products have sold')
-print(df_order_items['product_id'].value_counts().head(10))
-print('---------------------------------------------------------')
-
-print('The most 10 sellers have sold products')
-print(df_order_items['seller_id'].value_counts().head(10))
-print('---------------------------------------------------------')
-
-print('total price for each order')
-print(df_order_items.groupby('order_id')['total_price'].sum().sort_values(ascending=False))
-print('---------------------------------------------------------')
-
-print('total revenue')
-print(df_order_items['total_price'].sum())
-print('---------------------------------------------------------')
-
-print('total orders')
-print(df_order_items['order_id'].count())
-print('---------------------------------------------------------')
-
-# clean file
-df_order_items.to_csv('order_items_clean.csv',index=False)
+# load
+# df_order_items.to_csv('order_items_clean.csv',index=False)

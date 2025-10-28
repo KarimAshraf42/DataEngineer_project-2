@@ -48,25 +48,5 @@ print('----------------------')
 print(df_order_payments.describe(include='all'))
 print('----------------------')
 
-# analysis
-print('most payment method use')
-print(df_order_payments['payment_type'].value_counts())
-print('--------------------------------------------------')
-
-print('most 10 order have installments')
-print(df_order_payments.groupby('order_id')['payment_installments'].max().sort_values(ascending=False).head(10))
-print('--------------------------------------------------')
-
-print('least 10 order have installments')
-print(df_order_payments.groupby('order_id')['payment_installments'].min().sort_values(ascending=True).head(10))
-print('--------------------------------------------------')
-
-# visualization
-df_order_payments['payment_type'].value_counts().plot(kind='pie',autopct='%1.1f%%')
-plt.title('most payment method use')
-plt.ylabel('')
-plt.tight_layout()
-plt.show()
-
-# clean file
-df_order_payments.to_csv('order_payments_clean.csv',index=False)
+# load
+# df_order_payments.to_csv('order_payments_clean.csv',index=False)

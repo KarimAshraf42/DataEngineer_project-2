@@ -66,5 +66,5 @@ print('----------------------')
 print(df_geolocation.describe(include='all'))
 print('----------------------')
 
-# clean file
-df_geolocation.to_csv('geolocation_clean.csv',index=False)
+# load
+# df_geolocation.to_csv('geolocation_clean.csv',index=False)
